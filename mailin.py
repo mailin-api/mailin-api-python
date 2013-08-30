@@ -2,7 +2,7 @@ import httplib2
 import json
 import datetime
 import hmac 
-from hashlib import sha256,md5
+from hashlib import sha1,md5
 import base64
 
 class Mailin:
@@ -20,9 +20,9 @@ class Mailin:
       md5_content = md5.new(indata).hexdigest()
     c_date_time = datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M%p")
     sign_string = method+"\n"+md5_content+"\n"+content_type+"\n"+c_date_time+"\n"+url
-    hashed = hmac.new(self.secret_key,indata.encode('utf8'),hashlib.sha256)
-    signature = base64.b64encode(h.digest())
-    r,c = h.request(url,method,body=indata,headers={'X-mailin-date':c_date_time,'content-type':content_type,'Authorization':self.access_key+":"+signature})
+    hashed = hmac.new(self.secret_key,sign_string.encode('utf8'),sha1)
+    signature = base64.b64encode(hashed.hexdigest())
+    r,c = h.request(url,method,body=indata,headers={'X-mailin-date':c_date_time,'content-type':content_type,'Authorization':self.access_key+":"+signature})    
     return json.load(c)  
   def get(self,resource,indata):
     return self.do_request(resource,"GET",indata)

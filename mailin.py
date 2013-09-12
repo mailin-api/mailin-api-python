@@ -88,6 +88,8 @@ class Mailin:
     return self.post("statistics",json.dumps({"aggregate":aggregate,"tag":tag,"days":days,"end_date":end_date,"start_date":start_date}))
   def get_user(self,id):
     return self.get("user/" + id,"")
+  def get_user_stats(self,id,t):
+    return self.get("user/" + id + "/" + t,"")
   def create_user(self,attributes,blacklisted,email,listid):
     return self.post("user",json.dumps({"attributes":attributes,"blacklisted":blacklisted,"email":email,"listid":listid}))
   def delete_user(self,id):

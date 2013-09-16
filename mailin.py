@@ -6,6 +6,8 @@ from hashlib import sha1,md5
 import base64
 
 class Mailin:
+  """ This is the Mailin client class
+  """
   def __init__(self,base_url,access_key,secret_key):
     self.base_url = base_url
     self.access_key = access_key

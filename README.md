@@ -31,7 +31,6 @@ It currently supports all the API calls for v1.0. Each call returns an Object th
 2. Assuming that you have cloned this git repo, or downloaded mailin.py . You can use this small sample script to get started
 ```python
 from mailin import Mailin
-
 m = Mailin("https://api.mailinblue.com/v1.0","access key","secret key")
 campaigns = m.get_campaigns()
 ```

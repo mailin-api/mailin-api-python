@@ -37,7 +37,7 @@ class Mailin:
   def get_account(self,):
     return self.get("account","")
   def send_sms(self,text,tag,web_url,sms_from,sms_to):
-    return self.post("sms",json.dumps({"text":text,"tag":tag,"web_url":web_url,"sms_from":sms_from,"sms_to":sms_to}))
+    return self.post("sms",json.dumps({"text":text,"tag":tag,"web_url":web_url,"from":sms_from,"to":sms_to}))
   def get_campaigns(self,):
     return self.get("campaign","")
   def get_campaign(self,id):

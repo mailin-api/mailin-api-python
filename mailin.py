@@ -75,7 +75,7 @@ class Mailin:
   def delete_users_list(self,id,users):
     return self.delete("list/" + id + "/users",json.dumps({"users":users}))
   def send_email(self,cc,text,bcc,replyto,html,email_to,attachment,email_from,subject):
-    return self.post("email",json.dumps({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"email_to":email_to,"attachment":attachment,"email_from":email_from,"subject":subject}))
+    return self.post("email",json.dumps({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":email_to,"attachment":attachment,"from":email_from,"subject":subject}))
   def get_webhooks(self,):
     return self.get("webhook","")
   def get_webhook(self,id):

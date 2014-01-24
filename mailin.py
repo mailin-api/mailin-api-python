@@ -36,18 +36,18 @@ class Mailin:
     return self.do_request(resource,"DELETE",indata)
   def get_account(self,):
     return self.get("account","")
-  def send_sms(self,text,tag,web_url,sms_from,sms_to):
-    return self.post("sms",json.dumps({"text":text,"tag":tag,"web_url":web_url,"from":sms_from,"to":sms_to}))
-  def get_campaigns(self,):
-    return self.get("campaign","")
+  def send_sms(self,to,from,text,web_url,tag):
+    return self.post("sms",json.dumps({"text":text,"tag":tag,"web_url":web_url,"from":from,"to":to}))
+  def get_campaigns(self,type):
+    return self.get("campaign",json.dumps({"type":type}))
   def get_campaign(self,id):
     return self.get("campaign/" + id,"")
-  def create_campaign(self,category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject):
-    return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject}))
+  def create_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email):
+    return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email}))
   def delete_campaign(self,id):
     return self.delete("campaign/" + id,"")
-  def update_campaign(self,id,category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject):
-    return self.put("campaign/" + id,json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject}))
+  def update_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email):
+    return self.put("campaign/" + id,json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email}))
   def campaign_report_email(self,id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body):
     return self.post("campaign/" + id + "/report",json.dumps({"lang":lang,"email_subject":email_subject,"email_to":email_to,"email_content_type":email_content_type,"email_bcc":email_bcc,"email_cc":email_cc,"email_body":email_body}))
   def campaign_recipients_export(self,id,notify_url,type):
@@ -56,10 +56,6 @@ class Mailin:
     return self.get("process","")
   def get_process(self,id):
     return self.get("process/" + id,"")
-  def get_campaignstats(self,):
-    return self.get("campaignstat","")
-  def get_campaignstat(self,id):
-    return self.get("campaignstat/" + id,"")
   def get_lists(self,):
     return self.get("list","")
   def get_list(self,id):
@@ -74,8 +70,8 @@ class Mailin:
     return self.post("list/" + id + "/users",json.dumps({"users":users}))
   def delete_users_list(self,id,users):
     return self.delete("list/" + id + "/users",json.dumps({"users":users}))
-  def send_email(self,cc,text,bcc,replyto,html,email_to,attachment,email_from,subject):
-    return self.post("email",json.dumps({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":email_to,"attachment":attachment,"from":email_from,"subject":subject}))
+  def send_email(self,to,subject,from,html,text,cc,bcc,replyto,attachment,headers):
+    return self.post("email",json.dumps({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":to,"attachment":attachment,"from":from,"subject":subject,"headers":headers}))
   def get_webhooks(self,):
     return self.get("webhook","")
   def get_webhook(self,id):
@@ -96,8 +92,8 @@ class Mailin:
     return self.post("user",json.dumps({"attributes":attributes,"blacklisted":blacklisted,"email":email,"listid":listid}))
   def delete_user(self,id):
     return self.delete("user/" + id,"")
-  def update_user(self,id,attributes,blacklisted,listid):
-    return self.put("user/" + id,json.dumps({"attributes":attributes,"blacklisted":blacklisted,"listid":listid}))
+  def update_user(self,id,attributes,blacklisted,listid,listid_unlink):
+    return self.put("user/" + id,json.dumps({"attributes":attributes,"blacklisted":blacklisted,"listid":listid,"listid_unlink":listid_unlink}))
   def import_users(self,url,listids,notify_url,name):
     return self.post("user/import",json.dumps({"url":url,"listids":listids,"notify_url":notify_url,"name":name}))
   def export_users(self,export_attrib,filer,notify_url):

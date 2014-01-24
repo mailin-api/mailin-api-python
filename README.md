@@ -84,7 +84,7 @@ campaigns = m.get_campaigns()
  * [update_webhook](https://apidocs.sendinblue.com/webhooks/#4)(id,url,description,events) - Editing a webhook
  * [delete_bounces](https://apidocs.sendinblue.com/bounces/)(start_date,end_date,email) - Deleting bounces
  * [send_email](https://apidocs.sendinblue.com/tutorial-sending-transactional-email/)(to,subject,from,html,text,cc,bcc,replyto,attachment,headers) - Sending out a transactional email
- * [send_transactional_template](https://apidocs.sendinblue.com/template/)($id,$to,$cc,$bcc,$attr) - Send templates created on mailin, through mailin smtp.
+ * [send_transactional_template](https://apidocs.sendinblue.com/template/)(id,to,cc,bcc,attr) - Send templates created on mailin, through mailin smtp.
 
 ### SMS calls
 

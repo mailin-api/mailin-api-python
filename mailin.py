@@ -19,13 +19,13 @@ class Mailin:
     content_type = "application/json"
     md5_content = ""
     if indata!="":
-      md5_content = md5.new(indata).hexdigest()
+      md5_content = md5(indata).hexdigest()
     c_date_time = datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M%p")
     sign_string = method+"\n"+md5_content+"\n"+content_type+"\n"+c_date_time+"\n"+url
     hashed = hmac.new(self.secret_key,sign_string.encode('utf8'),sha1)
     signature = base64.b64encode(hashed.hexdigest())
     r,c = h.request(url,method,body=indata,headers={'X-mailin-date':c_date_time,'content-type':content_type,'Authorization':self.access_key+":"+signature})    
-    return json.load(c)  
+    return json.loads(c)  
   def get(self,resource,indata):
     return self.do_request(resource,"GET",indata)
   def post(self,resource,indata):
@@ -36,8 +36,8 @@ class Mailin:
     return self.do_request(resource,"DELETE",indata)
   def get_account(self,):
     return self.get("account","")
-  def send_sms(self,to,from,text,web_url,tag):
-    return self.post("sms",json.dumps({"text":text,"tag":tag,"web_url":web_url,"from":from,"to":to}))
+  def send_sms(self,to,from_name,text,web_url,tag):
+    return self.post("sms",json.dumps({"text":text,"tag":tag,"web_url":web_url,"from":from_name,"to":to}))
   def get_campaigns(self,type):
     return self.get("campaign",json.dumps({"type":type}))
   def get_campaign(self,id):
@@ -70,8 +70,8 @@ class Mailin:
     return self.post("list/" + id + "/users",json.dumps({"users":users}))
   def delete_users_list(self,id,users):
     return self.delete("list/" + id + "/users",json.dumps({"users":users}))
-  def send_email(self,to,subject,from,html,text,cc,bcc,replyto,attachment,headers):
-    return self.post("email",json.dumps({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":to,"attachment":attachment,"from":from,"subject":subject,"headers":headers}))
+  def send_email(self,to,subject,from_name,html,text,cc,bcc,replyto,attachment,headers):
+    return self.post("email",json.dumps({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":to,"attachment":attachment,"from":from_name,"subject":subject,"headers":headers}))
   def get_webhooks(self,):
     return self.get("webhook","")
   def get_webhook(self,id):

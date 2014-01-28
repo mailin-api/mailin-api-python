@@ -1,28 +1,8 @@
 # SendinBlue Python API
 
 This is the SendinBlue python API wrapper. 
-
-It currently supports all the API calls for v1.0. Each call returns an Object that is documented in our API docs, here are the objects.
-
- * Account
- * Campaign
- * Campaign statistics
- * Folder
- * List
- * Attribute
- * User
- * SMS
- * Process
-
-### SMTP APIs
-
- * File
- * Mail
- * Bounces
- * Template
- * Report
- * Statistics
- * Webhooks
+You will need to install the following module
+* httplib2
 
 ## Quickstart
 
@@ -83,9 +63,9 @@ campaigns = m.get_campaigns()
  * [delete_webhook](https://apidocs.sendinblue.com/webhooks/#5)(id) - Deleting a webhook
  * [update_webhook](https://apidocs.sendinblue.com/webhooks/#4)(id,url,description,events) - Editing a webhook
  * [delete_bounces](https://apidocs.sendinblue.com/bounces/)(start_date,end_date,email) - Deleting bounces
- * [send_email](https://apidocs.sendinblue.com/tutorial-sending-transactional-email/)(to,subject,from,html,text,cc,bcc,replyto,attachment,headers) - Sending out a transactional email
+ * [send_email](https://apidocs.sendinblue.com/tutorial-sending-transactional-email/)(to,subject,from_name,html,text,cc,bcc,replyto,attachment,headers) - Sending out a transactional email
  * [send_transactional_template](https://apidocs.sendinblue.com/template/)(id,to,cc,bcc,attr) - Send templates created on mailin, through mailin smtp.
 
 ### SMS calls
 
- * [send_sms](https://apidocs.sendinblue.com/sms/)(to,from,text,web_url,tag) - Sending a SMS
+ * [send_sms](https://apidocs.sendinblue.com/sms/)(to,from_name,text,web_url,tag) - Sending a SMS

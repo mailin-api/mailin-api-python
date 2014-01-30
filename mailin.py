@@ -42,12 +42,12 @@ class Mailin:
     return self.get("campaign",json.dumps({"type":type}))
   def get_campaign(self,id):
     return self.get("campaign/" + id,"")
-  def create_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to):
-    return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to}))
+  def create_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list):
+    return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"exclude_list":exclude_list}))
   def delete_campaign(self,id):
     return self.delete("campaign/" + id,"")
-  def update_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to):
-    return self.put("campaign/" + id,json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to}))
+  def update_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list):
+    return self.put("campaign/" + id,json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"exclude_list":exclude_list}))
   def campaign_report_email(self,id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body):
     return self.post("campaign/" + id + "/report",json.dumps({"lang":lang,"email_subject":email_subject,"email_to":email_to,"email_content_type":email_content_type,"email_bcc":email_bcc,"email_cc":email_cc,"email_body":email_body}))
   def campaign_recipients_export(self,id,notify_url,type):
@@ -69,7 +69,7 @@ class Mailin:
   def add_users_list(self,id,users):
     return self.post("list/" + id + "/users",json.dumps({"users":users}))
   def delete_users_list(self,id,users):
-    return self.delete("list/" + id + "/users",json.dumps({"users":users}))
+    return self.delete("list/" + id + "/delusers",json.dumps({"users":users}))
   def send_email(self,to,subject,from_name,html,text,cc,bcc,replyto,attachment,headers):
     return self.post("email",json.dumps({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":to,"attachment":attachment,"from":from_name,"subject":subject,"headers":headers}))
   def get_webhooks(self,):

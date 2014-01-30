@@ -12,7 +12,7 @@ You will need to install the following module
 ```python
 from mailin import Mailin
 m = Mailin("https://api.sendinblue.com/v1.0","access key","secret key")
-campaigns = m.get_campaigns()
+campaigns = m.get_campaigns('')
 ```
 3. To explore more, you should visit the [SendinBlue API documentation](https://apidocs.sendinblue.com).
 

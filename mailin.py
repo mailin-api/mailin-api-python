@@ -39,7 +39,10 @@ class Mailin:
   def send_sms(self,to,from_name,text,web_url,tag):
     return self.post("sms",json.dumps({"text":text,"tag":tag,"web_url":web_url,"from":from_name,"to":to}))
   def get_campaigns(self,type):
-    return self.get("campaign",json.dumps({"type":type}))
+   if type == "":
+   	return self.get("campaign/","")
+   else:
+   	return self.get("campaign/type/" + type + "/","")
   def get_campaign(self,id):
     return self.get("campaign/" + id,"")
   def create_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list):

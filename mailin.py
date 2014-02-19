@@ -121,6 +121,6 @@ class Mailin:
     return self.put("folder/" + id,json.dumps({"name":name}))
   def delete_bounces(self,start_date,end_date,email):
     return self.post("bounces",json.dumps({"start_date":start_date,"end_date":end_date,"email":email}))
-  def send_transactional_template(self,id,to,cc,bcc,attr)
-	return self.put("template/" + id,json.dumps({"cc":cc,"to":to,"attr":attr,"bcc":bcc}))
+  def send_transactional_template(self,id,to,cc,bcc,attr):
+	  return self.put("template/" + id,json.dumps({"cc":cc,"to":to,"attr":attr,"bcc":bcc}))
 

@@ -5,6 +5,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="mailin",
+    version="0.0.1",
     py_modules=["mailin"],
     install_requires=install_requires
 )

@@ -69,3 +69,11 @@ campaigns = m.get_campaigns('')
 ### SMS calls
 
  * [send_sms](https://apidocs.sendinblue.com/sms/)(to,from_name,text,web_url,tag) - Sending a SMS
+
+## Install
+
+To install the `mailin` module you can run `python setup.py install` in the root of the distribution.
+
+### Dependencies
+
+To just install the dependencies run `pip install -r requirements.txt`

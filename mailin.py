@@ -14,7 +14,7 @@ class Mailin:
     self.secret_key = secret_key     
   def do_request(self,resource,method,indata): 
     url = self.base_url + "/" + resource
-    h = httplib2.Http(".cache")
+    h = httplib2.Http(".cache", disable_ssl_certificate_validation=True)
     # Authorization header 
     content_type = "application/json"
     md5_content = ""

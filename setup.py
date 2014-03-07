@@ -5,7 +5,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="Sendinblue",
-    version="0.0.1",
+    version="1.0",
     py_modules=["mailin"],
     install_requires=install_requires
 )

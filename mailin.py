@@ -109,12 +109,12 @@ class Mailin:
     return self.post("user/export",json.dumps({"export_attrib":export_attrib,"filter":filter,"notify_url":notify_url}))
   def get_attributes(self,):
     return self.get("attribute","")
-  def get_attribute(self,id):
-    return self.get("attribute/" + id,"")
+  def get_attribute(self,type):
+    return self.get("attribute/" + type,"")
   def create_attribute(self,type,data):
     return self.post("attribute",json.dumps({"type":type,"data":data}))
-  def delete_attribute(self,id,data):
-    return self.post("attribute/" + id,json.dumps({"data":data}))
+  def delete_attribute(self,type,data):
+    return self.post("attribute/" + type,json.dumps({"data":data}))
   def get_report(self,limit,start_date,end_date,offset,date,days,email):
     return self.post("report",json.dumps({"limit":limit,"start_date":start_date,"end_date":end_date,"offset":offset,"date":date,"days":days,"email":email}))
   def get_folders(self,):

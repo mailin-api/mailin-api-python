@@ -54,7 +54,7 @@ class Mailin:
   def campaign_report_email(self,id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body):
     return self.post("campaign/" + id + "/report",json.dumps({"lang":lang,"email_subject":email_subject,"email_to":email_to,"email_content_type":email_content_type,"email_bcc":email_bcc,"email_cc":email_cc,"email_body":email_body}))
   def campaign_recipients_export(self,id,notify_url,type):
-    return self.post("campaign/" + id + "/report",json.dumps({"notify_url":notify_url,"type":type}))
+    return self.post("campaign/" + id + "/recipients",json.dumps({"notify_url":notify_url,"type":type}))
   def get_processes(self,):
     return self.get("process","")
   def get_process(self,id):
@@ -97,8 +97,8 @@ class Mailin:
     return self.put("user/" + id,json.dumps({"attributes":attributes,"blacklisted":blacklisted,"listid":listid,"listid_unlink":listid_unlink}))
   def import_users(self,url,listids,notify_url,name):
     return self.post("user/import",json.dumps({"url":url,"listids":listids,"notify_url":notify_url,"name":name}))
-  def export_users(self,export_attrib,filer,notify_url):
-    return self.post("user/export",json.dumps({"export_attrib":export_attrib,"filer":filer,"notify_url":notify_url}))
+  def export_users(self,export_attrib,filter,notify_url):
+    return self.post("user/export",json.dumps({"export_attrib":export_attrib,"filter":filter,"notify_url":notify_url}))
   def get_attributes(self,):
     return self.get("attribute","")
   def get_attribute(self,id):

@@ -63,6 +63,10 @@ class Mailin:
     return self.post("campaign/" + id + "/recipients",json.dumps({"notify_url":notify_url,"type":type}))
   def send_bat_email(self,campid,email_to):
     return self.post("campaign/" + campid + "/test",json.dumps({"emails":email_to}))
+  def create_trigger_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring):
+    return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
+  def update_trigger_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring):
+    return self.put("campaign/" + id,json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
   def get_processes(self,):
     return self.get("process","")
   def get_process(self,id):
@@ -131,10 +135,6 @@ class Mailin:
     return self.post("bounces",json.dumps({"start_date":start_date,"end_date":end_date,"email":email}))
   def send_transactional_template(self,id,to,cc,bcc,attr):
     return self.put("template/" + id,json.dumps({"cc":cc,"to":to,"attr":attr,"bcc":bcc}))
-  def create_trigger_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring):
-    return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
-  def update_trigger_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring):
-    return self.put("campaign/" + id,json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
   def create_template(self,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status):
     return self.post("template",json.dumps({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}))
   def update_template(self,id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status):

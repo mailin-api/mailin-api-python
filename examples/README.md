@@ -11,9 +11,9 @@ tutorial.py
  * [get_account](https://apidocs.sendinblue.com/account/)() - Get your account information
  * [get_campaigns](https://apidocs.sendinblue.com/campaign/#1)(type) - Get list of all campaigns or of specific type: "classic", "trigger", "sms"
  * [get_campaign](https://apidocs.sendinblue.com/campaign/#1)(id) - Get specific campaign object
- * [create_campaign](https://apidocs.sendinblue.com/campaign/#2)(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list) - Create a campaign
+ * [create_campaign](https://apidocs.sendinblue.com/campaign/#2)(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list) - Create a campaign
  * [delete_campaign](https://apidocs.sendinblue.com/campaign/#3)(id) - Delete a campaign
- * [update_campaign](https://apidocs.sendinblue.com/campaign/#4)(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list) - Update campaign information
+ * [update_campaign](https://apidocs.sendinblue.com/campaign/#4)(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list) - Update campaign information
  * [campaign_report_email](https://apidocs.sendinblue.com/campaign/#5)(id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body) - Sending reports to specific emails
  * [campaign_recipients_export](https://apidocs.sendinblue.com/campaign/#6)(id,notify_url,type) - Export recipients of a campaign
  * [send_bat_email](https://apidocs.sendinblue.com/campaign/#7)($campid,$email_to) - Send a test Email (bat)
@@ -32,9 +32,9 @@ tutorial.py
  * [add_users_list](https://apidocs.sendinblue.com/list/#6)(id,users) - Add users to a list
  * [delete_users_list](https://apidocs.sendinblue.com/list/#7)(id,users) - Delete users from a list
  * [get_attributes](https://apidocs.sendinblue.com/attribute/#1)() - Listing all attributes
- * [get_attribute](https://apidocs.sendinblue.com/attribute/#2)(id) - Listing a certain type attributes
+ * [get_attribute](https://apidocs.sendinblue.com/attribute/#2)(type) - Listing a certain type attributes
  * [create_attribute](https://apidocs.sendinblue.com/attribute/#3)(type,data) - Creating attributes
- * [delete_attribute](https://apidocs.sendinblue.com/attribute/#4)(id,data) - Deleting attributes
+ * [delete_attribute](https://apidocs.sendinblue.com/attribute/#4)(type,data) - Deleting attributes
  * [get_user](https://apidocs.sendinblue.com/user/#2)(id) - Get information about a user/email
  * [create_user](https://apidocs.sendinblue.com/user/#1)(attributes,blacklisted,email,listid) - Add a new user/email
  * [delete_user](https://apidocs.sendinblue.com/user/#4)(id) - Deleting user from db is not permitted but this action will unlink him from all lists

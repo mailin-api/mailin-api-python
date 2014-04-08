@@ -55,7 +55,7 @@ tutorial.py
  * [update_webhook](https://apidocs.sendinblue.com/webhooks/#4)(id,url,description,events) - Editing a webhook
  * [delete_bounces](https://apidocs.sendinblue.com/bounces/)(start_date,end_date,email) - Deleting bounces
  * [send_email](https://apidocs.sendinblue.com/tutorial-sending-transactional-email/)(to,subject,from_name,html,text,cc,bcc,replyto,attachment,headers) - Sending out a transactional email
- * [send_transactional_template](https://apidocs.sendinblue.com/template/)(id,to,cc,bcc,attr) - Send templates created on mailin, through mailin smtp.
+ * [send_transactional_template](https://apidocs.sendinblue.com/template/)(id,to,cc,bcc,attr) - Send templates created on Sendinblue, through Sendinblue smtp.
  * [create_template](https://apidocs.sendinblue.com/template/#2)($from_name,$name,$bat_sent,$html_content,$html_url,$subject,$from_email,$reply_to,$to_field,$status) - Create a template 
  * [update_template](https://apidocs.sendinblue.com/template/#3)($id,$from_name,$name,$bat_sent,$html_content,$html_url,$subject,$from_email,$reply_to,$to_field,$status) - Update template information
 

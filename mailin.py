@@ -36,8 +36,8 @@ class Mailin:
     return self.do_request(resource,"DELETE",indata)
   def get_account(self,):
     return self.get("account","")
-  def send_sms(self,to,from_name,text,web_url,tag):
-    return self.post("sms",json.dumps({"text":text,"tag":tag,"web_url":web_url,"from":from_name,"to":to}))
+  def send_sms(self,to,from_name,text,web_url,tag,type):
+    return self.post("sms",json.dumps({"text":text,"tag":tag,"web_url":web_url,"from":from_name,"to":to,"type":type}))
   def create_sms_campaign(self,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date):
     return self.post("sms",json.dumps({"name":camp_name,"sender":sender,"content":content,"bat":bat_sent,"listid":listids,"exclude_list":exclude_list,"scheduled_date":scheduled_date}))
   def update_sms_campaign(self,id,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date):

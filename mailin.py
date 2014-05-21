@@ -139,3 +139,11 @@ class Mailin:
     return self.post("template",json.dumps({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}))
   def update_template(self,id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status):
     return self.put("template/" + id,json.dumps({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}))
+  def get_senders(self,option):
+    return self.get("advanced",json.dumps({"option":option}))
+  def create_sender(self,sender_name,sender_email,ip_domain):
+    return self.post("advanced",json.dumps({"name":sender_name,"email":sender_email,"ip_domain":ip_domain}))
+  def update_sender(self,id,sender_name,sender_email,ip_domain):
+    return self.put("advanced/" + id,json.dumps({"name":sender_name,"email":sender_email,"ip_domain":ip_domain}))
+  def delete_sender(self,id):
+    return self.delete("advanced/" + id,"")

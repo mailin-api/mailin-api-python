@@ -16,9 +16,9 @@ tutorial.py
  * [update_campaign](https://apidocs.sendinblue.com/campaign/#4)(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list) - Update campaign information
  * [campaign_report_email](https://apidocs.sendinblue.com/campaign/#5)(id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body) - Sending reports to specific emails
  * [campaign_recipients_export](https://apidocs.sendinblue.com/campaign/#6)(id,notify_url,type) - Export recipients of a campaign
- * [send_bat_email](https://apidocs.sendinblue.com/campaign/#7)($campid,$email_to) - Send a test Email (bat)
- * [create_trigger_campaign](https://apidocs.sendinblue.com/campaign/#8)($category,$from_name,$name,$bat_sent,$html_content,$html_url,$listid,$scheduled_date,$subject,$from_email,$reply_to,$to_field,$exclude_list,$recurring) - Create a trigger campaign
- * [update_trigger_campaign](https://apidocs.sendinblue.com/campaign/#9)($id,$category,$from_name,$name,$bat_sent,$html_content,$html_url,$listid,$scheduled_date,$subject,$from_email,$reply_to,$to_field,$exclude_list,$recurring) - Update trigger campaign information
+ * [send_bat_email](https://apidocs.sendinblue.com/campaign/#7)(campid,email_to) - Send a test Email (bat)
+ * [create_trigger_campaign](https://apidocs.sendinblue.com/campaign/#8)(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) - Create a trigger campaign
+ * [update_trigger_campaign](https://apidocs.sendinblue.com/campaign/#9)(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) - Update trigger campaign information
  * [get_folders](https://apidocs.sendinblue.com/folder/#1)() - Get list of all the folder details.
  * [get_folder](https://apidocs.sendinblue.com/folder/#2)(id) - Get all the folder details for folder with id <id>
  * [create_folder](https://apidocs.sendinblue.com/folder/#3)(name) - Create a folder
@@ -43,7 +43,11 @@ tutorial.py
  * [export_users](https://apidocs.sendinblue.com/user/#6)(export_attrib,filter,notify_url) - Export users/emails
  * [get_processes](https://apidocs.sendinblue.com/process/#1)() - Get information about all background processes
  * [get_process](https://apidocs.sendinblue.com/process/#2)(id) - Get information about a specific process
-
+ * [get_senders](https://apidocs.sendinblue.com/sender-management/#1)(option) - Get information about all/specific senders
+ * [create_sender](https://apidocs.sendinblue.com/sender-management/#2)(sender_name,sender_email,ip_domain) - Create a sender
+ * [delete_sender](https://apidocs.sendinblue.com/sender-management/#3)(id) - Delete a sender
+ * [update_sender](https://apidocs.sendinblue.com/sender-management/#4)(id,sender_name,sender_email,ip_domain) - Update a sender
+ 
 ### SMTP calls
 
  * [get_report](https://apidocs.sendinblue.com/report/)(limit,start_date,end_date,offset,date,days,email) - Retrieve information for all report events
@@ -56,12 +60,12 @@ tutorial.py
  * [delete_bounces](https://apidocs.sendinblue.com/bounces/)(start_date,end_date,email) - Deleting bounces
  * [send_email](https://apidocs.sendinblue.com/tutorial-sending-transactional-email/)(to,subject,from_name,html,text,cc,bcc,replyto,attachment,headers) - Sending out a transactional email
  * [send_transactional_template](https://apidocs.sendinblue.com/template/)(id,to,cc,bcc,attr) - Send templates created on Sendinblue, through Sendinblue smtp.
- * [create_template](https://apidocs.sendinblue.com/template/#2)($from_name,$name,$bat_sent,$html_content,$html_url,$subject,$from_email,$reply_to,$to_field,$status) - Create a template 
- * [update_template](https://apidocs.sendinblue.com/template/#3)($id,$from_name,$name,$bat_sent,$html_content,$html_url,$subject,$from_email,$reply_to,$to_field,$status) - Update template information
+ * [create_template](https://apidocs.sendinblue.com/template/#2)(from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status) - Create a template 
+ * [update_template](https://apidocs.sendinblue.com/template/#3)(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status) - Update template information
 
 ### SMS calls
 
  * [send_sms](https://apidocs.sendinblue.com/sms/)(to,from_name,text,web_url,tag,type) - Sending a SMS
- * [create_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#2)($camp_name,$sender,$content,$bat_sent,$listids,$exclude_list,$scheduled_date) - Create a SMS campaign
- * [update_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#3)($id,$camp_name,$sender,$content,$bat_sent,$listids,$exclude_list,$scheduled_date) - Update a SMS campaign
- * [send_bat_sms](https://apidocs.sendinblue.com/mailin-sms/#4)($campid,$mobilephone) - Send a test SMS campaign
+ * [create_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#2)(camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) - Create a SMS campaign
+ * [update_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#3)(id,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) - Update a SMS campaign
+ * [send_bat_sms](https://apidocs.sendinblue.com/mailin-sms/#4)(campid,mobilephone) - Send a test SMS campaign

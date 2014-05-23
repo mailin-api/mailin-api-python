@@ -36,6 +36,16 @@ class Mailin:
     return self.do_request(resource,"DELETE",indata)
   def get_account(self,):
     return self.get("account","")
+  def create_child_account(self,email,password,company_org,first_name,last_name,credits):
+    return self.post("account",json.dumps({"child_email":email,"password":password,"company_org":company_org,"first_name":first_name,"last_name":last_name,"credits":credits}))
+  def update_child_account(self,child_authkey,company_org,first_name,last_name,password):
+    return self.put("account",json.dumps({"auth_key":child_authkey,"company_org":company_org,"first_name":first_name,"last_name":last_name,"password":password}))
+  def delete_child_account(self,child_authkey):
+    return self.delete("account/" + child_authkey,"")
+  def get_child_account(self,child_authkey):
+    return self.get("account/getchild",json.dumps({"auth_key":child_authkey}))
+  def add_remove_child_credits(self,child_authkey,add_credits,remove_credits):
+    return self.post("account/addrmvcredit",json.dumps({"auth_key":child_authkey,"add_credit":add_credits,"rmv_credit":remove_credits}))
   def send_sms(self,to,from_name,text,web_url,tag,type):
     return self.post("sms",json.dumps({"text":text,"tag":tag,"web_url":web_url,"from":from_name,"to":to,"type":type}))
   def create_sms_campaign(self,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date):

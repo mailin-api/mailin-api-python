@@ -77,6 +77,8 @@ class Mailin:
     return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
   def update_trigger_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring):
     return self.put("campaign/" + id,json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
+  def campaign_share_link(self,campaign_ids):
+    return self.post("campaign/sharelink",json.dumps({"camp_ids":campaign_ids}))
   def get_processes(self,):
     return self.get("process","")
   def get_process(self,id):

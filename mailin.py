@@ -43,7 +43,7 @@ class Mailin:
   def delete_child_account(self,child_authkey):
     return self.delete("account/" + child_authkey,"")
   def get_child_account(self,child_authkey):
-    return self.get("account/getchild",json.dumps({"auth_key":child_authkey}))
+    return self.post("account/getchild",json.dumps({"auth_key":child_authkey}))
   def add_remove_child_credits(self,child_authkey,add_credits,remove_credits):
     return self.post("account/addrmvcredit",json.dumps({"auth_key":child_authkey,"add_credit":add_credits,"rmv_credit":remove_credits}))
   def send_sms(self,to,from_name,text,web_url,tag,type):

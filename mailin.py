@@ -54,11 +54,11 @@ class Mailin:
     return self.put("sms/" + id,json.dumps({"name":camp_name,"sender":sender,"content":content,"bat":bat_sent,"listid":listids,"exclude_list":exclude_list,"scheduled_date":scheduled_date}))
   def send_bat_sms(self,campid,mobilephone):
     return self.get("sms/" + campid,json.dumps({"to":mobilephone}))
-  def get_campaigns(self,type):
-   if type == "":
-   	return self.get("campaign/","")
+  def get_campaigns(self,type,status,page,page_limit):
+   if type == "" and status == "" and page == "" and page_limit == "":
+    return self.get("campaign/","")
    else:
-   	return self.get("campaign/type/" + type + "/","")
+    return self.get("campaign/type/" + type + "/status/" + status + "/page/" + page + "/page_limit/" + page_limit + "/","")
   def get_campaign(self,id):
     return self.get("campaign/" + id,"")
   def create_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list):

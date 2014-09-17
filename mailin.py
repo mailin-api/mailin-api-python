@@ -125,8 +125,8 @@ class Mailin:
     return self.post("user/import",json.dumps({"url":url,"listids":listids,"notify_url":notify_url,"name":name}))
   def export_users(self,export_attrib,filter,notify_url):
     return self.post("user/export",json.dumps({"export_attrib":export_attrib,"filter":filter,"notify_url":notify_url}))
-  def create_update_user(self,email,attributes,blacklisted,listid,listid_unlink):
-      return self.post("user/createdituser",json.dumps({"email":email,"attributes":attributes,"blacklisted":blacklisted,"listid":listid,"listid_unlink":listid_unlink}))
+  def create_update_user(self,email,attributes,blacklisted,listid,listid_unlink,blacklisted_sms):
+      return self.post("user/createdituser",json.dumps({"email":email,"attributes":attributes,"blacklisted":blacklisted,"listid":listid,"listid_unlink":listid_unlink,"blacklisted_sms":blacklisted_sms}))
   def get_attributes(self,):
     return self.get("attribute","")
   def get_attribute(self,type):

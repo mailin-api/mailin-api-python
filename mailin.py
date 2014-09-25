@@ -36,6 +36,8 @@ class Mailin:
     return self.do_request(resource,"DELETE",indata)
   def get_account(self,):
     return self.get("account","")
+  def get_smtp_details(self,):
+    return self.get("account/smtpdetail","")
   def create_child_account(self,email,password,company_org,first_name,last_name,credits):
     return self.post("account",json.dumps({"child_email":email,"password":password,"company_org":company_org,"first_name":first_name,"last_name":last_name,"credits":credits}))
   def update_child_account(self,child_authkey,company_org,first_name,last_name,password):

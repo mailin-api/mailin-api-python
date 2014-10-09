@@ -6,6 +6,8 @@ tutorial.py
 
 ## Available functions
 
+List of API calls that you can make, you can click to read more about it. Please do note that the order of parameters are important.
+
 ### Campaign calls
 
  * [get_account](https://apidocs.sendinblue.com/account/)() - Get your account information

@@ -1,22 +1,23 @@
-# SendinBlue Python API
+# SendinBlue Python Library
 
-This is the SendinBlue python API wrapper. 
-You will need to install the following module
+This is the official SendinBlue Python API wrapper. You will need to install the following module
 * httplib2
 
 ## Quickstart
 
-1. You will need to first get the Access key and Secret key from [SendinBlue](https://www.sendinblue.com).
+1. You will need to first get the Access key from [SendinBlue](https://www.sendinblue.com).
 
 2. Assuming that you have cloned this git repo, or downloaded mailin.py . You can use this small sample script to get started
 ```python
 from mailin import Mailin
-m = Mailin("https://api.sendinblue.com/v1.0","access key","secret key")
+m = Mailin("https://api.sendinblue.com/v2.0","access key")
 campaigns = m.get_campaigns('')
 ```
 3. To explore more, you should visit the [SendinBlue API documentation](https://apidocs.sendinblue.com).
 
 ## Available functions
+
+List of API calls that you can make, you can click to read more about it. Please do note that the order of parameters are important.
 
 ### Campaign calls
 

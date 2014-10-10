@@ -9,8 +9,9 @@ class Mailin:
     self.api_key = api_key
   def do_request(self,resource,method,indata): 
     url = self.base_url + "/" + resource
-    h = httplib2.Http(".cache", disable_ssl_certificate_validation=True) 
-    r,c = h.request(url,method,body=indata,headers={'api-key':self.api_key})    
+    h = httplib2.Http(".cache", disable_ssl_certificate_validation=True)
+    content_type = "application/json"
+    r,c = h.request(url,method,body=indata,headers={'api-key':self.api_key, 'content-type':content_type})   
     return json.loads(c)  
   def get(self,resource,indata):
     return self.do_request(resource,"GET",indata)

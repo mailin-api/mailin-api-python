@@ -31,8 +31,8 @@ class Mailin:
     return self.put("account",json.dumps({"auth_key":child_authkey,"company_org":company_org,"first_name":first_name,"last_name":last_name,"password":password}))
   def delete_child_account(self,child_authkey):
     return self.delete("account/" + child_authkey,"")
-  def get_child_account(self,child_authkey):
-    return self.post("account/getchild",json.dumps({"auth_key":child_authkey}))
+  def get_reseller_child(self,child_authkey):
+    return self.post("account/getchildv2",json.dumps({"auth_key":child_authkey}))
   def add_remove_child_credits(self,child_authkey,add_credits,remove_credits):
     return self.post("account/addrmvcredit",json.dumps({"auth_key":child_authkey,"add_credit":add_credits,"rmv_credit":remove_credits}))
   def send_sms(self,to,from_name,text,web_url,tag,type):
@@ -43,13 +43,13 @@ class Mailin:
     return self.put("sms/" + id,json.dumps({"name":camp_name,"sender":sender,"content":content,"bat":bat_sent,"listid":listids,"exclude_list":exclude_list,"scheduled_date":scheduled_date}))
   def send_bat_sms(self,campid,mobilephone):
     return self.get("sms/" + campid,json.dumps({"to":mobilephone}))
-  def get_campaigns(self,type,status,page,page_limit):
+  def get_campaigns_v2(self,type,status,page,page_limit):
    if type == "" and status == "" and page == "" and page_limit == "":
-    return self.get("campaign/","")
+    return self.get("campaign/detailsv2/","")
    else:
-    return self.get("campaign/type/" + type + "/status/" + status + "/page/" + page + "/page_limit/" + page_limit + "/","")
-  def get_campaign(self,id):
-    return self.get("campaign/" + id,"")
+    return self.get("campaign/detailsv2/type/" + type + "/status/" + status + "/page/" + page + "/page_limit/" + page_limit + "/","")
+  def get_campaign_v2(self,id):
+    return self.get("campaign/" + id + "/detailsv2/","")
   def create_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list):
     return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list}))
   def delete_campaign(self,id):
@@ -66,8 +66,8 @@ class Mailin:
     return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
   def update_trigger_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring):
     return self.put("campaign/" + id,json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
-  def campaign_share_link(self,campaign_ids):
-    return self.post("campaign/sharelink",json.dumps({"camp_ids":campaign_ids}))
+  def share_campaign(self,campaign_ids):
+    return self.post("campaign/sharelinkv2",json.dumps({"camp_ids":campaign_ids}))
   def update_campaign_status(self,id,status):
     return self.put("campaign/" + id + "/updatecampstatus",json.dumps({"status":status}))
   def get_processes(self,):

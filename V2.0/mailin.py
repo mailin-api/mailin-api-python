@@ -70,12 +70,12 @@ class Mailin:
     return self.post("campaign/sharelinkv2",json.dumps({"camp_ids":campaign_ids}))
   def update_campaign_status(self,id,status):
     return self.put("campaign/" + id + "/updatecampstatus",json.dumps({"status":status}))
-  def get_processes(self,):
-    return self.get("process","")
+  def get_processes(self,page,page_limit):
+    return self.get("process",json.dumps({"page":page,"page_limit":page_limit}))
   def get_process(self,id):
     return self.get("process/" + id,"")
-  def get_lists(self,):
-    return self.get("list","")
+  def get_lists(self,page,page_limit):
+    return self.get("list",json.dumps({"page":page,"page_limit":page_limit}))
   def get_list(self,id):
     return self.get("list/" + id,"")
   def create_list(self,list_name,list_parent):
@@ -126,8 +126,8 @@ class Mailin:
     return self.post("attribute/" + type,json.dumps({"data":data}))
   def get_report(self,limit,start_date,end_date,offset,date,days,email):
     return self.post("report",json.dumps({"limit":limit,"start_date":start_date,"end_date":end_date,"offset":offset,"date":date,"days":days,"email":email}))
-  def get_folders(self,):
-    return self.get("folder","")
+  def get_folders(self,page,page_limit):
+    return self.get("folder",json.dumps({"page":page,"page_limit":page_limit}))
   def get_folder(self,id):
     return self.get("folder/" + id,"")
   def create_folder(self,name):

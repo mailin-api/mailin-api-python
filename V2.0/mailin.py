@@ -90,12 +90,12 @@ class Mailin:
     return self.delete("list/" + id + "/delusers",json.dumps({"users":users}))
   def send_email(self,to,subject,from_name,html,text,cc,bcc,replyto,attachment,headers):
     return self.post("email",json.dumps({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":to,"attachment":attachment,"from":from_name,"subject":subject,"headers":headers}))
-  def get_webhooks(self,):
-    return self.get("webhook","")
+  def get_webhooks(self,is_plat):
+    return self.get("webhook",json.dumps({"is_plat":is_plat}))
   def get_webhook(self,id):
     return self.get("webhook/" + id,"")
-  def create_webhook(self,url,description,events):
-    return self.post("webhook",json.dumps({"url":url,"description":description,"events":events}))
+  def create_webhook(self,url,description,events,is_plat):
+    return self.post("webhook",json.dumps({"url":url,"description":description,"events":events,"is_plat":is_plat}))
   def delete_webhook(self,id):
     return self.delete("webhook/" + id,"")
   def update_webhook(self,id,url,description,events):

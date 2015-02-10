@@ -55,7 +55,7 @@ class Mailin:
   def update_sms_campaign(self,id,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date):
     return self.put("sms/" + str(id),json.dumps({"name":camp_name,"sender":sender,"content":content,"bat":bat_sent,"listid":listids,"exclude_list":exclude_list,"scheduled_date":scheduled_date}))
   def send_bat_sms(self,campid,mobilephone):
-    return self.get("sms/" + campid,json.dumps({"to":mobilephone}))
+    return self.get("sms/" + str(campid),json.dumps({"to":mobilephone}))
   def get_campaigns(self,type,status,page,page_limit):
    if type == "" and status == "" and page == "" and page_limit == "":
     return self.get("campaign/","")
@@ -112,7 +112,7 @@ class Mailin:
   def delete_webhook(self,id):
     return self.delete("webhook/" + str(id),"")
   def update_webhook(self,id,url,description,events):
-    return self.put("webhook/" + id,json.dumps({"url":url,"description":description,"events":events}))
+    return self.put("webhook/" + str(id),json.dumps({"url":url,"description":description,"events":events}))
   def get_statistics(self,aggregate,tag,days,end_date,start_date):
     return self.post("statistics",json.dumps({"aggregate":aggregate,"tag":tag,"days":days,"end_date":end_date,"start_date":start_date}))
   def get_user(self,id):
@@ -162,6 +162,6 @@ class Mailin:
   def create_sender(self,sender_name,sender_email,ip_domain):
     return self.post("advanced",json.dumps({"name":sender_name,"email":sender_email,"ip_domain":ip_domain}))
   def update_sender(self,id,sender_name,sender_email,ip_domain):
-    return self.put("advanced/" + id,json.dumps({"name":sender_name,"email":sender_email,"ip_domain":ip_domain}))
+    return self.put("advanced/" + str(id),json.dumps({"name":sender_name,"email":sender_email,"ip_domain":ip_domain}))
   def delete_sender(self,id):
     return self.delete("advanced/" + str(id),"")

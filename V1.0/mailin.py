@@ -53,7 +53,7 @@ class Mailin:
   def create_sms_campaign(self,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date):
     return self.post("sms",json.dumps({"name":camp_name,"sender":sender,"content":content,"bat":bat_sent,"listid":listids,"exclude_list":exclude_list,"scheduled_date":scheduled_date}))
   def update_sms_campaign(self,id,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date):
-    return self.put("sms/" + id,json.dumps({"name":camp_name,"sender":sender,"content":content,"bat":bat_sent,"listid":listids,"exclude_list":exclude_list,"scheduled_date":scheduled_date}))
+    return self.put("sms/" + str(id),json.dumps({"name":camp_name,"sender":sender,"content":content,"bat":bat_sent,"listid":listids,"exclude_list":exclude_list,"scheduled_date":scheduled_date}))
   def send_bat_sms(self,campid,mobilephone):
     return self.get("sms/" + campid,json.dumps({"to":mobilephone}))
   def get_campaigns(self,type,status,page,page_limit):
@@ -62,55 +62,55 @@ class Mailin:
    else:
     return self.get("campaign/type/" + type + "/status/" + status + "/page/" + page + "/page_limit/" + page_limit + "/","")
   def get_campaign(self,id):
-    return self.get("campaign/" + id,"")
+    return self.get("campaign/" + str(id),"")
   def create_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list):
     return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list}))
   def delete_campaign(self,id):
-    return self.delete("campaign/" + id,"")
+    return self.delete("campaign/" + str(id),"")
   def update_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list):
-    return self.put("campaign/" + id,json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list}))
+    return self.put("campaign/" + str(id),json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list}))
   def campaign_report_email(self,id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body):
-    return self.post("campaign/" + id + "/report",json.dumps({"lang":lang,"email_subject":email_subject,"email_to":email_to,"email_content_type":email_content_type,"email_bcc":email_bcc,"email_cc":email_cc,"email_body":email_body}))
+    return self.post("campaign/" + str(id) + "/report",json.dumps({"lang":lang,"email_subject":email_subject,"email_to":email_to,"email_content_type":email_content_type,"email_bcc":email_bcc,"email_cc":email_cc,"email_body":email_body}))
   def campaign_recipients_export(self,id,notify_url,type):
-    return self.post("campaign/" + id + "/recipients",json.dumps({"notify_url":notify_url,"type":type}))
+    return self.post("campaign/" + str(id) + "/recipients",json.dumps({"notify_url":notify_url,"type":type}))
   def send_bat_email(self,campid,email_to):
-    return self.post("campaign/" + campid + "/test",json.dumps({"emails":email_to}))
+    return self.post("campaign/" + str(campid) + "/test",json.dumps({"emails":email_to}))
   def create_trigger_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring):
     return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
   def update_trigger_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring):
-    return self.put("campaign/" + id,json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
+    return self.put("campaign/" + str(id),json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
   def campaign_share_link(self,campaign_ids):
     return self.post("campaign/sharelink",json.dumps({"camp_ids":campaign_ids}))
   def update_campaign_status(self,id,status):
-    return self.put("campaign/" + id + "/updatecampstatus",json.dumps({"status":status}))
+    return self.put("campaign/" + str(id) + "/updatecampstatus",json.dumps({"status":status}))
   def get_processes(self,):
     return self.get("process","")
   def get_process(self,id):
-    return self.get("process/" + id,"")
+    return self.get("process/" + str(id),"")
   def get_lists(self,):
     return self.get("list","")
   def get_list(self,id):
-    return self.get("list/" + id,"")
+    return self.get("list/" + str(id),"")
   def create_list(self,list_name,list_parent):
     return self.post("list",json.dumps({"list_name":list_name,"list_parent":list_parent}))
   def delete_list(self,id):
-    return self.delete("list/" + id,"")
+    return self.delete("list/" + str(id),"")
   def update_list(self,id,list_name,list_parent):
-    return self.put("list/" + id,json.dumps({"list_name":list_name,"list_parent":list_parent}))
+    return self.put("list/" + str(id),json.dumps({"list_name":list_name,"list_parent":list_parent}))
   def add_users_list(self,id,users):
-    return self.post("list/" + id + "/users",json.dumps({"users":users}))
+    return self.post("list/" + str(id) + "/users",json.dumps({"users":users}))
   def delete_users_list(self,id,users):
-    return self.delete("list/" + id + "/delusers",json.dumps({"users":users}))
+    return self.delete("list/" + str(id) + "/delusers",json.dumps({"users":users}))
   def send_email(self,to,subject,from_name,html,text,cc,bcc,replyto,attachment,headers):
     return self.post("email",json.dumps({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":to,"attachment":attachment,"from":from_name,"subject":subject,"headers":headers}))
   def get_webhooks(self,):
     return self.get("webhook","")
   def get_webhook(self,id):
-    return self.get("webhook/" + id,"")
+    return self.get("webhook/" + str(id),"")
   def create_webhook(self,url,description,events):
     return self.post("webhook",json.dumps({"url":url,"description":description,"events":events}))
   def delete_webhook(self,id):
-    return self.delete("webhook/" + id,"")
+    return self.delete("webhook/" + str(id),"")
   def update_webhook(self,id,url,description,events):
     return self.put("webhook/" + id,json.dumps({"url":url,"description":description,"events":events}))
   def get_statistics(self,aggregate,tag,days,end_date,start_date):
@@ -142,21 +142,21 @@ class Mailin:
   def get_folders(self,):
     return self.get("folder","")
   def get_folder(self,id):
-    return self.get("folder/" + id,"")
+    return self.get("folder/" + str(id),"")
   def create_folder(self,name):
     return self.post("folder",json.dumps({"name":name}))
   def delete_folder(self,id):
-    return self.delete("folder/" + id,"")
+    return self.delete("folder/" + str(id),"")
   def update_folder(self,id,name):
-    return self.put("folder/" + id,json.dumps({"name":name}))
+    return self.put("folder/" + str(id),json.dumps({"name":name}))
   def delete_bounces(self,start_date,end_date,email):
     return self.post("bounces",json.dumps({"start_date":start_date,"end_date":end_date,"email":email}))
   def send_transactional_template(self,id,to,cc,bcc,attr):
-    return self.put("template/" + id,json.dumps({"cc":cc,"to":to,"attr":attr,"bcc":bcc}))
+    return self.put("template/" + str(id),json.dumps({"cc":cc,"to":to,"attr":attr,"bcc":bcc}))
   def create_template(self,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status):
     return self.post("template",json.dumps({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}))
   def update_template(self,id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status):
-    return self.put("template/" + id,json.dumps({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}))
+    return self.put("template/" + str(id),json.dumps({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}))
   def get_senders(self,option):
     return self.get("advanced",json.dumps({"option":option}))
   def create_sender(self,sender_name,sender_email,ip_domain):
@@ -164,4 +164,4 @@ class Mailin:
   def update_sender(self,id,sender_name,sender_email,ip_domain):
     return self.put("advanced/" + id,json.dumps({"name":sender_name,"email":sender_email,"ip_domain":ip_domain}))
   def delete_sender(self,id):
-    return self.delete("advanced/" + id,"")
+    return self.delete("advanced/" + str(id),"")

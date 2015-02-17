@@ -50,22 +50,22 @@ class Mailin:
     return self.get("campaign/detailsv2/type/" + type + "/status/" + status + "/page/" + page + "/page_limit/" + page_limit + "/","")
   def get_campaign_v2(self,id):
     return self.get("campaign/" + str(id) + "/detailsv2/","")
-  def create_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list):
-    return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list}))
+  def create_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,attachmentUrl,inline_image):
+    return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"attachment_url":attachmentUrl,"inline_image":inline_image}))
   def delete_campaign(self,id):
     return self.delete("campaign/" + str(id),"")
-  def update_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list):
-    return self.put("campaign/" + str(id),json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list}))
+  def update_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,attachmentUrl,inline_image):
+    return self.put("campaign/" + str(id),json.dumps({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"attachment_url":attachmentUrl,"inline_image":inline_image}))
   def campaign_report_email(self,id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body):
     return self.post("campaign/" + str(id) + "/report",json.dumps({"lang":lang,"email_subject":email_subject,"email_to":email_to,"email_content_type":email_content_type,"email_bcc":email_bcc,"email_cc":email_cc,"email_body":email_body}))
   def campaign_recipients_export(self,id,notify_url,type):
     return self.post("campaign/" + str(id) + "/recipients",json.dumps({"notify_url":notify_url,"type":type}))
   def send_bat_email(self,campid,email_to):
     return self.post("campaign/" + str(campid) + "/test",json.dumps({"emails":email_to}))
-  def create_trigger_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring):
-    return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
-  def update_trigger_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring):
-    return self.put("campaign/" + str(id),json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}))
+  def create_trigger_campaign(self,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring,attachmentUrl,inline_image):
+    return self.post("campaign",json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring,"attachment_url":attachmentUrl,"inline_image":inline_image}))
+  def update_trigger_campaign(self,id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring,attachmentUrl,inline_image):
+    return self.put("campaign/" + str(id),json.dumps({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring,"attachment_url":attachmentUrl,"inline_image":inline_image}))
   def share_campaign(self,campaign_ids):
     return self.post("campaign/sharelinkv2",json.dumps({"camp_ids":campaign_ids}))
   def update_campaign_status(self,id,status):
@@ -138,12 +138,12 @@ class Mailin:
     return self.put("folder/" + str(id),json.dumps({"name":name}))
   def delete_bounces(self,start_date,end_date,email):
     return self.post("bounces",json.dumps({"start_date":start_date,"end_date":end_date,"email":email}))
-  def send_transactional_template(self,id,to,cc,bcc,attr):
-    return self.put("template/" + str(id),json.dumps({"cc":cc,"to":to,"attr":attr,"bcc":bcc}))
-  def create_template(self,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status):
-    return self.post("template",json.dumps({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}))
-  def update_template(self,id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status):
-    return self.put("template/" + str(id),json.dumps({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}))
+  def send_transactional_template(self,id,to,cc,bcc,attr,attachmentUrl,attachment):
+    return self.put("template/" + str(id),json.dumps({"cc":cc,"to":to,"attr":attr,"bcc":bcc,"attachment_url":attachmentUrl,"attachment":attachment}))
+  def create_template(self,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status,attach):
+    return self.post("template",json.dumps({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status,"attachment":attach}))
+  def update_template(self,id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status,attach):
+    return self.put("template/" + str(id),json.dumps({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status,"attachment":attach}))
   def get_senders(self,option):
     return self.get("advanced",json.dumps({"option":option}))
   def create_sender(self,sender_name,sender_email,ip_domain):

@@ -21,7 +21,7 @@ List of API calls that you can make, you can click to read more about it. Please
 
 ### Campaign calls
 
- * [get_account](https://apidocs.sendinblue.com/account/)() - Get your account information
+ * [get_account](https://apidocs.sendinblue.com/account/#1)() - Get your account information
  * [get_smtp_details](https://apidocs.sendinblue.com/account/#7)() - Get your SMTP account information
  * [create_child_account](https://apidocs.sendinblue.com/account/#2)(email,password,company_org,first_name,last_name,credits) - Create a Reseller child account
  * [update_child_account](https://apidocs.sendinblue.com/account/#3)(child_authkey,company_org,first_name,last_name,password) - Update a Reseller child account
@@ -30,14 +30,14 @@ List of API calls that you can make, you can click to read more about it. Please
  * [add_remove_child_credits](https://apidocs.sendinblue.com/account/#6)(childauthkey,add_credits,remove_credits) - Add/Remove Reseller child credits
  * [get_campaigns_v2](https://apidocs.sendinblue.com/campaign/#1)(type,status,page,page_limit) - Get list of all campaigns or of specific type or status or both
  * [get_campaign_v2](https://apidocs.sendinblue.com/campaign/#1)(id) - Get specific campaign object
- * [create_campaign](https://apidocs.sendinblue.com/campaign/#2)(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list) - Create a campaign
+ * [create_campaign](https://apidocs.sendinblue.com/campaign/#2)(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,attachmentUrl,inline_image) - Create a campaign
  * [delete_campaign](https://apidocs.sendinblue.com/campaign/#3)(id) - Delete a campaign
- * [update_campaign](https://apidocs.sendinblue.com/campaign/#4)(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list) - Update campaign information
+ * [update_campaign](https://apidocs.sendinblue.com/campaign/#4)(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,attachmentUrl,inline_image) - Update campaign information
  * [campaign_report_email](https://apidocs.sendinblue.com/campaign/#5)(id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body) - Sending reports to specific emails
  * [campaign_recipients_export](https://apidocs.sendinblue.com/campaign/#6)(id,notify_url,type) - Export recipients of a campaign
  * [send_bat_email](https://apidocs.sendinblue.com/campaign/#7)(campid,email_to) - Send a test Email (bat)
- * [create_trigger_campaign](https://apidocs.sendinblue.com/campaign/#8)(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) - Create a trigger campaign
- * [update_trigger_campaign](https://apidocs.sendinblue.com/campaign/#9)(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) - Update trigger campaign information
+ * [create_trigger_campaign](https://apidocs.sendinblue.com/campaign/#8)(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring,attachmentUrl,inline_image) - Create a trigger campaign
+ * [update_trigger_campaign](https://apidocs.sendinblue.com/campaign/#9)(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring,attachmentUrl,inline_image) - Update trigger campaign information
  * [share_campaign](https://apidocs.sendinblue.com/campaign/#10)(campaign_ids) - Get campaign share link
  * [update_campaign_status](https://apidocs.sendinblue.com/campaign/#11)(id,status) - Modify a campaign status
  * [get_folders](https://apidocs.sendinblue.com/folder/#1)(page,page_limit) - Get list of all the folder details.
@@ -55,10 +55,10 @@ List of API calls that you can make, you can click to read more about it. Please
  * [get_attributes](https://apidocs.sendinblue.com/attribute/#1)() - Listing all attributes
  * [get_attribute](https://apidocs.sendinblue.com/attribute/#2)(type) - Listing a certain type attributes
  * [create_attribute](https://apidocs.sendinblue.com/attribute/#3)(type,data) - Creating attributes
- * [delete_attribute](https://apidocs.sendinblue.com/attribute/#4)(type,data) - Deleting attributes
- * [get_user](https://apidocs.sendinblue.com/user/#2)(id) - Get information about a user/email
+ * [delete_attribute](https://apidocs.sendinblue.com/attribute/#4)(type,data) - Deleting attributes of the given type
+ * [get_user](https://apidocs.sendinblue.com/user/#2)(email) - Get information about a user/email
  * [create_update_user](https://apidocs.sendinblue.com/user/#1)(email,attributes,blacklisted,listid,listid_unlink,blacklisted_sms) - Create/Update a user information
- * [delete_user](https://apidocs.sendinblue.com/user/#4)(id) - Deleting user from db is not permitted but this action will unlink him from all lists
+ * [delete_user](https://apidocs.sendinblue.com/user/#4)(email) - Deleting user from db is not permitted but this action will unlink him from all lists
  * [import_users](https://apidocs.sendinblue.com/user/#5)(url,listids,notify_url,name) - Import users/emails
  * [export_users](https://apidocs.sendinblue.com/user/#6)(export_attrib,filter,notify_url) - Export users/emails
  * [get_processes](https://apidocs.sendinblue.com/process/#1)(page,page_limit) - Get information about all background processes
@@ -72,20 +72,20 @@ List of API calls that you can make, you can click to read more about it. Please
 
  * [get_report](https://apidocs.sendinblue.com/report/)(limit,start_date,end_date,offset,date,days,email) - Retrieve information for all report events
  * [get_statistics](https://apidocs.sendinblue.com/statistics/)(aggregate,tag,days,end_date,start_date) - Get aggregate statistics about emails sent
- * [get_webhooks](https://apidocs.sendinblue.com/webhooks/#1)(is_plat) -  Get list of all registered webhooks or of specific type
+ * [get_webhooks](https://apidocs.sendinblue.com/webhooks/#1)(is_plat) - Get list of all registered webhooks or of specific type
  * [get_webhook](https://apidocs.sendinblue.com/webhooks/#2)(id) - Get information about a webhook
  * [create_webhook](https://apidocs.sendinblue.com/webhooks/#3)(url,description,events,is_plat) - Registering a webhook
  * [delete_webhook](https://apidocs.sendinblue.com/webhooks/#5)(id) - Deleting a webhook
  * [update_webhook](https://apidocs.sendinblue.com/webhooks/#4)(id,url,description,events) - Editing a webhook
  * [delete_bounces](https://apidocs.sendinblue.com/bounces/)(start_date,end_date,email) - Deleting bounces
  * [send_email](https://apidocs.sendinblue.com/tutorial-sending-transactional-email/)(to,subject,from_name,html,text,cc,bcc,replyto,attachment,headers) - Sending out a transactional email
- * [send_transactional_template](https://apidocs.sendinblue.com/template/)(id,to,cc,bcc,attr) - Send templates created on Sendinblue, through Sendinblue smtp.
- * [create_template](https://apidocs.sendinblue.com/template/#2)(from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status) - Create a template 
- * [update_template](https://apidocs.sendinblue.com/template/#3)(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status) - Update template information
+ * [send_transactional_template](https://apidocs.sendinblue.com/template/)(id,to,cc,bcc,attr,attachmentUrl,attachment) - Send templates created on Sendinblue, through Sendinblue smtp.
+ * [create_template](https://apidocs.sendinblue.com/template/#2)(from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status,attach) - Create a template 
+ * [update_template](https://apidocs.sendinblue.com/template/#3)(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status,attach) - Update template information
 
 ### SMS calls
 
- * [send_sms](https://apidocs.sendinblue.com/sms/)(to,from_name,text,web_url,tag,type) - Sending a SMS
+ * [send_sms](https://apidocs.sendinblue.com/mailin-sms/#1)(to,from_name,text,web_url,tag,type) - Sending a SMS
  * [create_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#2)(camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) - Create a SMS campaign
  * [update_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#3)(id,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) - Update a SMS campaign
  * [send_bat_sms](https://apidocs.sendinblue.com/mailin-sms/#4)(campid,mobilephone) - Send a test SMS campaign

@@ -110,8 +110,8 @@ class Mailin:
     return self.delete("user/" + id,"")
   def update_user(self,id,attributes,blacklisted,listid,listid_unlink):
     return self.put("user/" + id,json.dumps({"attributes":attributes,"blacklisted":blacklisted,"listid":listid,"listid_unlink":listid_unlink}))
-  def import_users(self,url,listids,notify_url,name):
-    return self.post("user/import",json.dumps({"url":url,"listids":listids,"notify_url":notify_url,"name":name}))
+  def import_users(self,url,listids,notify_url,name,folder_id):
+    return self.post("user/import",json.dumps({"url":url,"listids":listids,"notify_url":notify_url,"name":name,"list_parent":folder_id}))
   def export_users(self,export_attrib,filter,notify_url):
     return self.post("user/export",json.dumps({"export_attrib":export_attrib,"filter":filter,"notify_url":notify_url}))
   def create_update_user(self,email,attributes,blacklisted,listid,listid_unlink,blacklisted_sms):

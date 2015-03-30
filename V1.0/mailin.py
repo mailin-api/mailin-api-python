@@ -38,10 +38,10 @@ class Mailin:
     return self.get("account","")
   def get_smtp_details(self,):
     return self.get("account/smtpdetail","")
-  def create_child_account(self,email,password,company_org,first_name,last_name,credits):
-    return self.post("account",json.dumps({"child_email":email,"password":password,"company_org":company_org,"first_name":first_name,"last_name":last_name,"credits":credits}))
-  def update_child_account(self,child_authkey,company_org,first_name,last_name,password):
-    return self.put("account",json.dumps({"auth_key":child_authkey,"company_org":company_org,"first_name":first_name,"last_name":last_name,"password":password}))
+  def create_child_account(self,email,password,company_org,first_name,last_name,credits,associate_ip):
+    return self.post("account",json.dumps({"child_email":email,"password":password,"company_org":company_org,"first_name":first_name,"last_name":last_name,"credits":credits,"associate_ip":associate_ip,}))
+  def update_child_account(self,child_authkey,company_org,first_name,last_name,password,associate_ip,disassociate_ip):
+    return self.put("account",json.dumps({"auth_key":child_authkey,"company_org":company_org,"first_name":first_name,"last_name":last_name,"password":password,"associate_ip":associate_ip,"disassociate_ip":disassociate_ip}))
   def delete_child_account(self,child_authkey):
     return self.delete("account/" + child_authkey,"")
   def get_child_account(self,child_authkey):

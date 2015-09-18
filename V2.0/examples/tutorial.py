@@ -1,5 +1,12 @@
 from mailin import Mailin
 
 m = Mailin("https://api.sendinblue.com/v2.0","access key")
-campaigns = m.get_campaigns_v2('classic') # to retrieve all campaigns of type 'classic'
-campaigns = m.get_campaigns_v2('') # to retrieve all campaigns
+
+# to retrieve all campaigns of type 'classic' & status 'queued'
+data = { "type":"classic",
+	"status":"queued",
+	"page":1,
+	"page_limit":10
+}
+
+campaigns = m.get_campaigns_v2(data)

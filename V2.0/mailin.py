@@ -500,6 +500,7 @@ class Mailin:
   # @param {Array} data contains php array with key value pair.
   # @options data {Integer} type: Type of attribute to be deleted [Mandatory]
   def delete_attribute(self,data):
+    type = data['type']
     return self.post("attribute/" + type,json.dumps(data))
 
   # Get Email Event report.

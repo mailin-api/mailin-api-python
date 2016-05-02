@@ -436,14 +436,14 @@ class Mailin:
   # @param {Array} data contains php array with key value pair.
   # @options data {String} email: Email address of the already existing user in the SendinBlue contacts [Mandatory]
   def get_user(self,data):
-    id = str(data['id'])
+    id = data['email']
     return self.get("user/" + id,"")
 
   # Unlink existing user from all lists.
   # @param {Array} data contains php array with key value pair.
   # @options data {String} email: Email address of the already existing user in the SendinBlue contacts to be unlinked from all lists [Mandatory]
   def delete_user(self,data):
-    id = str(data['id'])
+    id = data['email']
     return self.delete("user/" + id,"")
 
   # Import Users Information.

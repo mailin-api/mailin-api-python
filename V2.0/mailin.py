@@ -1,14 +1,28 @@
+import socket
 import httplib2
 import json
 
 class Mailin:
   """ This is the Mailin client class
   """
-  def __init__(self,base_url,api_key):
+  def __init__(self,base_url,api_key,timeout=None):
     self.base_url = base_url
     self.api_key = api_key
+    self.timeout = timeout
   def do_request(self,resource,method,indata): 
     url = self.base_url + "/" + resource
+
+    if self.timeout is not None:
+      self.timeout= self.timeout
+    else:
+      self.timeout = 30 #default timeout: 30 secs
+
+    if self.timeout is not None and (self.timeout <=0 or self.timeout > 60):
+      raise Exception('value not allowed for timeout')
+    
+    #request timeout
+    socket.setdefaulttimeout(self.timeout)
+
     h = httplib2.Http(".cache", disable_ssl_certificate_validation=True)
     content_type = "application/json"
     r,c = h.request(url,method,body=indata,headers={'api-key':self.api_key, 'content-type':content_type})   

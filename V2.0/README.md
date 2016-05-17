@@ -2,15 +2,19 @@
 
 This is the official SendinBlue Python API wrapper. You will need to install the following module
 * httplib2
+* json
+* socket
 
 ## Quickstart
 
 1. You will need to first get the Access key from [SendinBlue](https://www.sendinblue.com).
 
-2. Assuming that you have cloned this git repo, or downloaded mailin.py . You can use this small sample script to get started
+2. Our library supports a timeout value, default is 30 Secs, which you can pass as 3rd parameter in Mailin class Object.
+
+3. Assuming that you have cloned this git repo, or downloaded mailin.py . You can use this small sample script to get started
 ```python
 from mailin import Mailin
-m = Mailin("https://api.sendinblue.com/v2.0","access key")
+m = Mailin("https://api.sendinblue.com/v2.0","access key",5)	#Optional parameter: Timeout in Secs
 data = { "type":"classic",
 	"status":"queued",
 	"page":1,
@@ -18,7 +22,7 @@ data = { "type":"classic",
 }
 campaigns = m.get_campaigns_v2(data)
 ```
-3. To explore more, you should visit the [SendinBlue API documentation](https://apidocs.sendinblue.com).
+4. To explore more, you should visit the [SendinBlue API documentation](https://apidocs.sendinblue.com).
 
 ## Available functions
 

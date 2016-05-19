@@ -3,6 +3,10 @@
 This is the official SendinBlue Python API wrapper. You will need to install the following module
 * httplib2
 
+Compatibility:
+
+ - Python 2.7
+
 ## Quickstart
 
 1. You will need to first get the Access key and Secret key from [SendinBlue](https://www.sendinblue.com).

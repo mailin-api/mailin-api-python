@@ -5,6 +5,10 @@ This is the official SendinBlue Python API wrapper. You will need to install the
 * json
 * socket
 
+Compatibility:
+
+ - Python 2.7
+
 ## Quickstart
 
 1. You will need to first get the Access key from [SendinBlue](https://www.sendinblue.com).

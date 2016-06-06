@@ -2,12 +2,11 @@
 
 This is the official SendinBlue Python API wrapper. You will need to install the following module
 * httplib2
-* json
-* socket
+* chardet
 
 Compatibility:
 
- - Python 2.7
+ - Python 2.7/ Python 3.x
 
 ## Quickstart
 

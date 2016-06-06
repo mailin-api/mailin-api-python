@@ -1,5 +1,6 @@
 import socket
 import httplib2
+import chardet
 import json
 
 class Mailin:
@@ -25,8 +26,11 @@ class Mailin:
 
     h = httplib2.Http(".cache", disable_ssl_certificate_validation=True)
     content_type = "application/json"
-    r,c = h.request(url,method,body=indata,headers={'api-key':self.api_key, 'content-type':content_type})   
-    return json.loads(c)  
+    r,c = h.request(url,method,body=indata,headers={'api-key':self.api_key, 'content-type':content_type})
+    charenc = chardet.detect(c)
+    return json.loads(c.decode(charenc['encoding']))  
+
+
   def get(self,resource,indata):
     return self.do_request(resource,"GET",indata)
   def post(self,resource,indata):

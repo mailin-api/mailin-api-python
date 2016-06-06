@@ -4,10 +4,6 @@ This is the SendinBlue Python library. It implements the various exposed APIs th
 
 SendinBlue API's use HTTP Authentication through an api key. You can create your api key from [API Console](https://my.sendinblue.com/advanced/apikey), after you sign up for an account with SendinBlue. You must use latest version 2.0, access key, for accessing APIs.
 
-Compatibility:
-
- - Python 2.7
-
 ## Quickstart Guide
 
 Learn how to send email campaigns from your application using SendinBlue API.

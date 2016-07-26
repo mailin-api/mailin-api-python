@@ -1,6 +1,4 @@
-import socket
-import httplib2
-import chardet
+import requests
 import json
 
 class Mailin:
@@ -10,7 +8,7 @@ class Mailin:
     self.base_url = base_url
     self.api_key = api_key
     self.timeout = timeout
-  def do_request(self,resource,method,indata): 
+  def do_request(self,resource,method,indata):
     url = self.base_url + "/" + resource
 
     if self.timeout is not None:
@@ -20,15 +18,16 @@ class Mailin:
 
     if self.timeout is not None and (self.timeout <=0 or self.timeout > 60):
       raise Exception('value not allowed for timeout')
-    
-    #request timeout
-    socket.setdefaulttimeout(self.timeout)
 
-    h = httplib2.Http(".cache", disable_ssl_certificate_validation=True)
-    content_type = "application/json"
-    r,c = h.request(url,method,body=indata,headers={'api-key':self.api_key, 'content-type':content_type})
-    charenc = chardet.detect(c)
-    return json.loads(c.decode(charenc['encoding']))  
+    content_type = 'application/json'
+    headers = {
+      'api-key': self.api_key,
+      'content-type': content_type,
+    }
+    response = requests.request(method.lower(), url, data=indata,
+                                headers=headers, timeout=self.timeout)
+
+    return response.json()
 
 
   def get(self,resource,indata):
@@ -60,7 +59,7 @@ class Mailin:
   # @options data {Array} credits: Number of email & sms credits respectively, which will be assigned to the Reseller child's account [Optional]
   #     - email_credit {Integer} number of email credits
   #     - sms_credit {Integer} Number of sms credts
-  # @options data {Array} associate_ip: Associate dedicated IPs to reseller child. You can use commas to separate multiple IPs [Optional] 
+  # @options data {Array} associate_ip: Associate dedicated IPs to reseller child. You can use commas to separate multiple IPs [Optional]
   def create_child_account(self,data):
     return self.post("account",json.dumps(data))
 
@@ -194,7 +193,7 @@ class Mailin:
 
   # Delete your campaigns.
   # @param {Array} data contains php array with key value pair.
-  # @options data {Integer} id: Id of campaign to be deleted [Mandatory]    
+  # @options data {Integer} id: Id of campaign to be deleted [Mandatory]
   def delete_campaign(self,data):
     id = str(data['id'])
     return self.delete("campaign/" + id,"")
@@ -352,7 +351,7 @@ class Mailin:
   # @options data {Integer} list_parent: Folder ID [Mandatory]
   def create_list(self,data):
     return self.post("list",json.dumps(data))
-  
+
   # Delete a specific list.
   # @param {Array} data contains php array with key value pair.
   # @options data {Integer} id: Id of list to be deleted [Mandatory]
@@ -446,7 +445,7 @@ class Mailin:
   # @options data {String} start_date: The start date to look up statistics. Date must be in YYYY-MM-DD format and should be before the end_date [Optional]
   # @options data {String} end_date: The end date to look up statistics. Date must be in YYYY-MM-DD format and should be after the start_date [Optional]
   # @options data {Integer} days: Number of days in the past to include statistics ( Includes today ). It must be an integer greater than 0 [Optional]
-  # @options data {String} tag: The tag you will specify to retrieve detailed stats. It must be an existing tag that has statistics [Optional]  
+  # @options data {String} tag: The tag you will specify to retrieve detailed stats. It must be an existing tag that has statistics [Optional]
   def get_statistics(self,data):
     return self.post("statistics",json.dumps(data))
 

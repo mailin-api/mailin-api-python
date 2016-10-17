@@ -1,8 +1,7 @@
 # SendinBlue Python Library
 
 This is the official SendinBlue Python API wrapper. You will need to install the following module
-* httplib2
-* chardet
+* requests
 
 Compatibility:
 

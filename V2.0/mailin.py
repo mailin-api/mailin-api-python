@@ -368,6 +368,15 @@ class Mailin:
     id = str(data['id'])
     return self.put("list/" + id,json.dumps(data))
 
+  # Display details of all users for the given lists.
+  # @param {Array} data contains php array with key value pair.
+  # @options data {Array} listids: These are the list ids to get their data. The ids found will display records [Mandatory]
+  # @options data {String} timestamp: This is date-time filter to fetch modified user records >= this time. Valid format Y-m-d H:i:s. Example: "2015-05-22 14:30:00" [Optional]
+  # @options data {Integer} page: Maximum number of records per request is 500, if in your list there are more than 500 users then you can use this parameter to get next 500 results [Optional]
+  # @options data {Integer} page_limit: This should be a valid number between 1-500 [Optional]
+  def display_list_users(self,data):
+    return self.post("list/display",json.dumps(data))
+
   # Add already existing users in the SendinBlue contacts to the list.
   # @param {Array} data contains php array with key value pair.
   # @options data {Integer} id: Id of list to link users in it [Mandatory]

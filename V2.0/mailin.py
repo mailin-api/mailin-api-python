@@ -24,10 +24,13 @@ class Mailin:
       'api-key': self.api_key,
       'content-type': content_type,
     }
-    response = requests.request(method.lower(), url, data=indata,
-                                headers=headers, timeout=self.timeout)
 
-    return response.json()
+    try:
+      response = requests.request(method.lower(), url, data=indata,
+                                headers=headers, timeout=self.timeout)
+      return response.json()
+    except:  
+      raise Exception('Request failed')
 
 
   def get(self,resource,indata):

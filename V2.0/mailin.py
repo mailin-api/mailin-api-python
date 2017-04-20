@@ -9,10 +9,9 @@ class Mailin:
     self.api_key = api_key
 
     if not (0 < timeout <= 60):
-      raise ValueError("timeout must be between 1 and 60 seconds")
+      raise ValueError("value not allowed for timeout")
 
     self.timeout = timeout
-
 
   def do_request(self,resource,method,indata):
     url = self.base_url + "/" + resource

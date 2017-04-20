@@ -4,20 +4,18 @@ import json
 class Mailin:
   """ This is the Mailin client class
   """
-  def __init__(self,base_url,api_key,timeout=None):
+  def __init__(self,base_url,api_key,timeout=30):
     self.base_url = base_url
     self.api_key = api_key
+
+    if not (0 < timeout <= 60):
+      raise ValueError("timeout must be between 1 and 60 seconds")
+
     self.timeout = timeout
+
+
   def do_request(self,resource,method,indata):
     url = self.base_url + "/" + resource
-
-    if self.timeout is not None:
-      self.timeout= self.timeout
-    else:
-      self.timeout = 30 #default timeout: 30 secs
-
-    if self.timeout is not None and (self.timeout <=0 or self.timeout > 60):
-      raise Exception('value not allowed for timeout')
 
     content_type = 'application/json'
     headers = {
